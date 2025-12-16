@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="registration.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Медиа — Молодёжный культурный центр ВГТК</title>
+    <meta name="description" content="Фотогалерея и видеоконтент Молодёжного культурного центра ВГТК." />
+</head>
+<body>
+<header>
+    <div class="topbar container">
+        <div class="brand">
+            <div class="logo">МК</div>
+            <div>
+                <div style="font-weight:700">Молодёжный культурный центр</div>
+                <div class="muted" style="font-size:.85rem">ВГТК — Витебск</div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Главная</a></li>
+                <li><a href="about.html">О центре</a></li>
+                <li><a href="studios.html">Сотрудники</a></li>
+                <li><a href="events.html">Мероприятия</a></li>
+                <li><a href="media.html">Медиа</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div style="display:flex;gap:.6rem;align-items:center">
+            <a class="cta" data-register-trigger href="#">Записаться</a>
+            <button class="hamburger" aria-label="menu" onclick="toggleMenu()">☰</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="page-hero">
+        <p class="muted"><a href="Index.html">← На главную</a></p>
+        <h1>Галерея и медиа</h1>
+        <p>Фото с репетиций, концертов и гастролей, а также видео из кулис. Используйте материалы для пресс-релизов и социальных сетей.</p>
+    </section>
+
+    <section style="margin-top:1rem">
+        <h2>Фотогалерея</h2>
+        <div class="gallery" style="margin-top:1rem">
+            <img src="https://vitgtk.belstu.by/wp-content/uploads/2025/05/photo_2025-05-26_08-07-39.jpg" >
+            <img src="https://vitgtk.belstu.by/wp-content/uploads/2025/05/photo_2025-05-26_08-07-48.jpg" >
+            <img src="https://vitgtk.belstu.by/wp-content/uploads/2025/05/photo_2025-05-24_14-40-06.jpg" >
+            <img src="https://vitgtk.belstu.by/wp-content/uploads/2024/10/DSC_0002-1.jpg" >
+            <img src="https://vitgtk.belstu.by/wp-content/uploads/2021/10/IMG_20211002_103408.jpg" >
+            <img src="https://vitgtk.belstu.by/wp-content/uploads/2025/05/photo_2025-05-14_23-09-29.jpg" >
+            <img src="https://vitgtk.belstu.by/wp-content/uploads/2025/05/photo_2025-05-15_08-27-52-4.jpg" >
+            <img src="https://vitgtk.belstu.by/wp-content/uploads/2025/05/photo_2025-05-15_08-31-01.jpg" >
+        </div>
+    </section>
+
+<!--    <section style="margin-top:1.5rem">-->
+<!--        <h2>Видео</h2>-->
+<!--        <div class="split-two">-->
+<!--            <article class="card">-->
+<!--                <p class="muted">Запись отчётного концерта AMARES 2024</p>-->
+<!--                <div style="position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden">-->
+<!--                    <iframe src="https://www.youtube.com/watch?v=Lm12gDg0D8c" title="Amares video" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen></iframe>-->
+<!--                </div>-->
+<!--            </article>-->
+<!--            <article class="card">-->
+<!--                <p class="muted">Бэкстейдж FREE FLIGHT</p>-->
+<!--                <div style="position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden">-->
+<!--                    <iframe src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="Free Flight video" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen></iframe>-->
+<!--                </div>-->
+<!--            </article>-->
+<!--        </div>-->
+<!--    </section>-->
+
+    <section style="margin-top:1.5rem">
+        <h2>Как использовать материалы</h2>
+        <div class="highlights">
+            <article class="card">
+                <h3>Пресса</h3>
+                <p class="muted">Получите доступ к исходникам и описаниям номеров по запросу.</p>
+            </article>
+            <article class="card">
+                <h3>Соцсети</h3>
+                <p class="muted">Скачайте подборку сторис и Reels в формате 9:16.</p>
+            </article>
+            <article class="card">
+                <h3>Участники</h3>
+                <p class="muted">Используйте материалы для портфолио и портфолио поступления.</p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <div style="font-weight:700">Молодёжный культурный центр ВитГТК</div>
+            <div class="muted" style="font-size:.9rem">г.Витебск, ул.Гагарина 41 · : 8(0212)36-17-07 · vitgtk@belstu.by</div>
+        </div>
+        <div class="muted">© ВитГТК — МКЦ 2025</div>
+    </div>
+</footer>
+
+<div id="registrationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="registrationContainer"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="registration.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,64 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "gjgjg",
+      "date": "12.12.2025",
+      "location": "Большой зал ВГТК",
+      "type": "concert",
+      "image": "https://vitgtk.belstu.by/wp-content/uploads/2025/05/photo_2025-05-24_14-40-06.jpg",
+      "imageAlt": "Отчётный концерт AMARES",
+      "articleId": "1"
+    },
+    {
+      "articleId": "2",
+      "date": "05.11.2025",
+      "id": "2",
+      "image": "https://vitgtk.belstu.by/wp-content/uploads/2024/10/DSC_0002-1.jpg",
+      "imageAlt": "Премьера номера DziVA",
+      "location": "Актовый зал",
+      "title": "Творческий конкурс «Виват, первокурсник!»",
+      "type": "premiere"
+    },
+    {
+      "articleId": "3",
+      "date": "20.10.2025",
+      "id": "3",
+      "image": "https://vitgtk.belstu.by/wp-content/uploads/2021/10/IMG_20211002_103408.jpg",
+      "imageAlt": "Выставка-ярмарка",
+      "location": "Площадь Ленина",
+      "title": "В Витебске прошла выставка-ярмарка учреждений образования области «Восенскi карагод»",
+      "type": "street"
+    },
+    {
+      "articleId": "4",
+      "date": "05.11.2025",
+      "id": "4",
+      "image": "https://vitgtk.belstu.by/wp-content/uploads/2025/05/photo_2025-05-14_23-09-29.jpg",
+      "imageAlt": "Конкурс Мисс и Мистер Весна",
+      "location": "Актовый зал",
+      "title": "Районный конкурс творчества и артистического мастерства «Мисс и Мистер Весна – 2025»",
+      "type": "premiere"
+    },
+    {
+      "articleId": "5",
+      "date": "05.11.2025",
+      "id": "5",
+      "image": "https://vitgtk.belstu.by/wp-content/uploads/2025/05/photo_2025-05-15_08-27-52-4.jpg",
+      "imageAlt": "Конкурс АРТ-портал",
+      "location": "Актовый зал",
+      "title": "Итоги областного этапа республиканского заочного конкурса художественного творчества учащихся «АРТ-портал»",
+      "type": "premiere"
+    },
+    {
+      "articleId": "6",
+      "date": "05.11.2025",
+      "id": "6",
+      "image": "https://vitgtk.belstu.by/wp-content/uploads/2025/05/photo_2025-05-15_08-31-01.jpg",
+      "imageAlt": "Конкурс КРЕОН",
+      "location": "Актовый зал",
+      "title": "Итоги областного этапа республиканского конкурса информационно-методических разработок культурно-досуговых мероприятий для учащейся молодежи «КРЕОН»",
+      "type": "premiere"
+    }
+  ]
+}

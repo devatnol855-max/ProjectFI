@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="registration.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Сотрудники — Молодёжный культурный центр ВГТК</title>
+    <meta name="description" content="Сотрудники Молодёжного культурного центра ВГТК." />
+</head>
+<body>
+<header>
+    <div class="topbar container">
+        <div class="brand">
+            <div class="logo">МК</div>
+            <div>
+                <div style="font-weight:700">Молодёжный культурный центр</div>
+                <div class="muted" style="font-size:.85rem">ВГТК — Витебск</div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Главная</a></li>
+                <li><a href="about.html">О центре</a></li>
+                <li><a href="studios.html">Сотрудники</a></li>
+                <li><a href="events.html">Мероприятия</a></li>
+                <li><a href="media.html">Медиа</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div style="display:flex;gap:.6rem;align-items:center">
+            <a class="cta" data-register-trigger href="#">Записаться</a>
+            <button class="hamburger" aria-label="menu" onclick="toggleMenu()">☰</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="page-hero">
+        <p class="muted"><a href="Index.html">← На главную</a></p>
+        <h1>Сотрудники центра</h1>
+        <p>Познакомьтесь с нашей командой — преподаватели, руководители студий, организаторы.</p>
+    </section>
+
+    <section>
+
+        <!-- Поиск -->
+        <div class="search-filter-container">
+            <input type="text" id="searchInput" placeholder="Поиск по имени или роли..." oninput="filterEmployees()" />
+            <select id="roleSelect" onchange="filterEmployees()">
+                <option value="">Все должности</option>
+                <option value="Главный">Главный</option>
+                <option value="Вокал">Вокал</option>
+                <option value="Танцы">Танцы</option>
+                <option value="Театралка">Театралка</option>
+                <option value="Звукорежиссёр">Звукорежиссёр</option>
+            </select>
+        </div>
+        <div id="suggestions" class="suggestions"></div>
+
+        <div class="employees" id="employeeList">
+            <article class="employee-card" data-name="Владимир Михайлович" data-role="Главный">
+                <img src="img/vladimir.jpg" alt="Владимир Михайлович" />
+                <h3>Владимир Михайлович</h3>
+                <p class="muted">(Главный)</p>
+            </article>
+            <article class="employee-card" data-name="Елена Сергеевна" data-role="Вокал">
+                <img src="img/elena.jpg" alt="Елена Сергеевна" />
+                <h3>Елена Сергеевна</h3>
+                <p class="muted">(Вокал)</p>
+            </article>
+            <article class="employee-card" data-name="Анастасия Петровна" data-role="Танцы">
+                <img src="img/anastasia.jpg" alt="Анастасия Петровна" />
+                <h3>Анастасия Петровна</h3>
+                <p class="muted">(Танцы)</p>
+            </article>
+            <article class="employee-card" data-name="Олеся Александровна" data-role="Театралка">
+                <img src="img/olesya.jpg" alt="Олеся Александровна" />
+                <h3>Олеся Александровна</h3>
+                <p class="muted">(Театралка)</p>
+            </article>
+            <article class="employee-card" data-name="Роман Юрьевич" data-role="Звукорежиссёр">
+                <img src="img/roman.jpg" alt="Роман Юрьевич" />
+                <h3>Роман Юрьевич</h3>
+                <p class="muted">(Звукорежиссёр)</p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <div style="font-weight:700">Молодёжный культурный центр ВитГТК</div>
+            <div class="muted" style="font-size:.9rem">г.Витебск, ул.Гагарина 41 · : 8(0212)36-17-07 · vitgtk@belstu.by</div>
+        </div>
+        <div class="muted">© ВитГТК — МКЦ 2025</div>
+    </div>
+</footer>
+
+<div id="registrationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="registrationContainer"></div>
+    </div>
+</div>
+
+<script>
+    const employees = [
+        "Владимир Михайлович (Главный)",
+        "Елена Сергеевна (Вокал)",
+        "Анастасия Петровна (Танцы)",
+        "Олеся Александровна (Театралка)",
+        "Роман Юрьевич (Звукорежиссёр)"
+    ];
+
+    function filterEmployees() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const roleFilter = document.getElementById('roleSelect').value.toLowerCase();
+        const cards = document.querySelectorAll('.employee-card');
+        const suggestions = document.getElementById('suggestions');
+
+        suggestions.innerHTML = '';
+
+        if (query.length > 0) {
+            const filtered = employees.filter(e => e.toLowerCase().includes(query));
+            filtered.forEach(text => {
+                const div = document.createElement('div');
+                div.className = 'suggestion';
+                div.textContent = text;
+                div.onclick = () => {
+                    document.getElementById('searchInput').value = text;
+                    suggestions.innerHTML = '';
+                    filterEmployees();
+                };
+                suggestions.appendChild(div);
+            });
+        }
+
+        cards.forEach(card => {
+            const name = card.dataset.name.toLowerCase();
+            const role = card.dataset.role.toLowerCase();
+
+            const matchesQuery = name.includes(query) || role.includes(query);
+            const matchesRole = !roleFilter || role === roleFilter;
+
+            card.style.display = (matchesQuery && matchesRole) ? 'block' : 'none';
+        });
+    }
+</script>
+
+<script src="script.js"></script>
+<script src="registration.js"></script>
+
+</body>
+</html>
+

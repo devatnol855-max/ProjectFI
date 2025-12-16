@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="registration.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Афиша — Молодёжный культурный центр ВГТК</title>
+    <style>
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+        }
+        .error {
+            text-align: center;
+            padding: 2rem;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="topbar container">
+        <div class="brand">
+            <div class="logo">МК</div>
+            <div>
+                <div style="font-weight:700">Молодёжный культурный центр</div>
+                <div class="muted" style="font-size:.85rem">ВитГТК — Витебск</div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Главная</a></li>
+                <li><a href="about.html">О центре</a></li>
+                <li><a href="studios.html">Сотрудники</a></li>
+                <li><a href="events.html">Мероприятия</a></li>
+                <li><a href="media.html">Медиа</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div style="display:flex;gap:.6rem;align-items:center">
+            <a class="cta" id="ctaRegister" href="#">Записаться</a>
+            <button class="hamburger" aria-label="menu" onclick="toggleMenu()">☰</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="page-hero">
+        <p class="muted"><a href="Index.html">← На главную</a></p>
+        <h1>Афиша мероприятий</h1>
+        <p>Следите за отчётными концертами, мастер-классами и выездными выступлениями. Нажмите «Подробнее», чтобы открыть полную программу.</p>
+    </section>
+
+    <!-- Поиск и фильтры -->
+    <section>
+        <input id="search" type="text" placeholder="Поиск по событиям" style="padding:.6rem;width:100%;max-width:360px;margin-bottom:.8rem">
+
+        <label for="filter"></label><select id="filter" style="padding:.6rem;width:100%;max-width:200px;">
+            <option value="all">Все события</option>
+            <option value="concert">Концерты</option>
+            <option value="premiere">Премьеры</option>
+            <option value="street">Уличные</option>
+        </select>
+    </section>
+
+    <section>
+        <h2>Прошедшие мероприятия</h2>
+        <div class="events" id="events-list">
+            <div class="loading" style="text-align:center;padding:2rem;color:var(--muted)">Загрузка событий...</div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <div style="font-weight:700">Молодёжный культурный центр ВитГТК</div>
+            <div class="muted" style="font-size:.9rem">г.Витебск, ул.Гагарина 41 · : 8(0212)36-17-07 · vitgtk@belstu.by</div>
+        </div>
+        <div class="muted">© ВитГТК — МКЦ 2025</div>
+    </div>
+</footer>
+
+
+
+<div id="registrationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="registrationContainer"></div> <!-- сюда подгрузится форма -->
+    </div>
+</div>
+
+<script src="events.js"></script>
+<script src="registration.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+.registration {
+    background: var(--bg);
+    padding: 2rem 1rem;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 2rem auto;
+    box-shadow: 0 6px 18px rgba(16,24,40,.06);
+}
+
+.registration h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.8rem;
+}
+
+.registration p {
+    margin: 0 0 1.5rem;
+    color: var(--muted);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #e6e9ef;
+    font-size: 0.95rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.7rem;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: #ff7ab6;
+}
+
+/* Адаптивность */
+@media (max-width:700px) {
+    .registration {
+        padding: 1.5rem 1rem;
+        margin: 1.5rem 1rem;
+    }
+}

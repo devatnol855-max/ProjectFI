@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="registration.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Статья — Молодёжный культурный центр ВГТК</title>
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .article-header {
+            margin-bottom: 2rem;
+        }
+        .article-back {
+            color: var(--muted);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        .article-back:hover {
+            color: var(--accent);
+        }
+        .article-date {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .article-title {
+            font-size: 2rem;
+            margin: 0 0 1rem;
+            line-height: 1.3;
+        }
+        .article-location {
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+        .article-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .article-content {
+            line-height: 1.8;
+            color: var(--dark);
+        }
+        .article-content p {
+            margin-bottom: 1.2rem;
+        }
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .article-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .article-gallery {
+            margin-top: 2.5rem;
+        }
+        .article-gallery h3 {
+            margin: 0 0 1rem;
+        }
+        .gallery-grid {
+            display: grid;
+            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        }
+        .gallery-card {
+            position: relative;
+            padding: 0;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        .gallery-card.expanded {
+            grid-column: span 2;
+            grid-row: span 2;
+            transform: scale(1.03);
+        }
+        .gallery-hint {
+            margin-top: 0.5rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        .gallery-lightbox {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1200;
+        }
+        .gallery-lightbox.active {
+            display: flex;
+        }
+        .lightbox-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: min(1100px, 92vw);
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: #0f0f0f;
+            border-radius: 12px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        }
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .lightbox-caption {
+            color: #f2f2f2;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.2s ease;
+        }
+        .lightbox-close:hover {
+            background: rgba(0,0,0,0.8);
+        }
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--muted);
+        }
+        .error {
+            text-align: center;
+            padding: 3rem;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="topbar container">
+        <div class="brand">
+            <div class="logo">МК</div>
+            <div>
+                <div style="font-weight:700">Молодёжный культурный центр</div>
+                <div class="muted" style="font-size:.85rem">ВитГТК — Витебск</div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Главная</a></li>
+                <li><a href="about.html">О центре</a></li>
+                <li><a href="studios.html">Сотрудники</a></li>
+                <li><a href="events.html">Мероприятия</a></li>
+                <li><a href="media.html">Медиа</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div style="display:flex;gap:.6rem;align-items:center">
+            <a class="cta" id="ctaRegister" href="#">Записаться</a>
+            <button class="hamburger" aria-label="menu" onclick="toggleMenu()">☰</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="article-container">
+        <div id="article-content">
+            <div class="loading">Загрузка статьи...</div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <div style="font-weight:700">Молодёжный культурный центр ВитГТК</div>
+            <div class="muted" style="font-size:.9rem">г.Витебск, ул.Гагарина 41 · : 8(0212)36-17-07 · vitgtk@belstu.by</div>
+        </div>
+        <div class="muted">© ВитГТК — МКЦ 2025</div>
+    </div>
+</footer>
+
+<div id="registrationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="registrationContainer"></div>
+    </div>
+</div>
+
+<div id="gallery-lightbox" class="gallery-lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" data-close="true"></div>
+    <div class="lightbox-content">
+        <button class="lightbox-close" type="button" data-close="true" aria-label="Закрыть просмотр">×</button>
+        <img id="lightbox-image" class="lightbox-image" alt="">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="article.js"></script>
+<script src="registration.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="registration.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>О центре — Молодёжный культурный центр ВитГТК</title>
+    <meta name="description" content="История и миссия Молодёжного культурного центра ВГТК, направления работы и команда кураторов." />
+</head>
+<body>
+<header>
+    <div class="topbar container">
+        <div class="brand">
+            <div class="logo">МК</div>
+            <div>
+                <div style="font-weight:700">Молодёжный культурный центр</div>
+                <div class="muted" style="font-size:.85rem">ВитГТК — Витебск</div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Главная</a></li>
+                <li><a href="about.html">О центре</a></li>
+                <li><a href="studios.html">Сотрудники</a></li>
+                <li><a href="events.html">Мероприятия</a></li>
+                <li><a href="media.html">Медиа</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div style="display:flex;gap:.6rem;align-items:center">
+            <a class="cta" data-register-trigger href="#">Записаться</a>
+            <button class="hamburger" aria-label="menu" onclick="toggleMenu()">☰</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="page-hero">
+        <p class="muted"><a href="Index.html">← На главную</a></p>
+        <h1>О Молодёжном культурном центре</h1>
+        <p>МКЦ ВитГТК — творческое пространство колледжа для вокала, танца и проектных инициатив. Мы объединяем студентов, педагогов и выпускников вокруг идеи свободного самовыражения.</p>
+    </section>
+
+    <section class="split-two">
+        <article class="card">
+            <h3>Миссия и задачи</h3>
+            <p class="muted">Создать среду, где каждый студент может попробовать себя в искусстве, развить лидерские качества и представить колледж на городских и международных площадках.</p>
+            <ul class="muted" style="padding-left:1.2rem;line-height:1.6;margin:1rem 0 0">
+                <li>организация студий и тематических курсов;</li>
+                <li>подготовка концертных и фестивальных программ;</li>
+                <li>волонтёрские инициативы и социальные проекты;</li>
+                <li>поддержка начинающих авторов и режиссёров.</li>
+            </ul>
+        </article>
+        <article class="card">
+            <h3>Команда</h3>
+            <p class="muted">Наставники центра — хореографы, вокалисты, режиссёры и методисты с опытом работы в театрах и продакшн-студиях.</p>
+            <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:1rem" class="muted">
+                <div><b>Руководитель:</b> Владимир Михайлович</div>
+                <div><b>Преподаватель вокала:</b> Елена Сергеевна</div>
+                <div><b>Хореограф :</b> Анастасия Петровна</div>
+                <div><b>Звукорежесер:</b> Роман Юрьевич</div>
+            </div>
+        </article>
+    </section>
+
+    <section style="margin-top:1.5rem">
+        <h2>Направления работы</h2>
+        <div class="highlights">
+            <article class="card">
+                <h3>Сцена</h3>
+                <p class="muted">От сольных вокальных номеров до крупных танцевальных постановок.</p>
+            </article>
+            <article class="card">
+                <h3>Образование</h3>
+                <p class="muted">Мастер-классы, лекции приглашённых специалистов и наставничество.</p>
+            </article>
+            <article class="card">
+                <h3>Проекты</h3>
+                <p class="muted">Социальные акции, благотворительные концерты и городские фестивали.</p>
+            </article>
+        </div>
+    </section>
+
+    <section style="margin-top:1.5rem">
+
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <div style="font-weight:700">Молодёжный культурный центр ВГТК</div>
+            <div class="muted" style="font-size:.9rem">г.Витебск, ул.Гагарина 41 · : 8(0212)36-17-07 · vitgtk@belstu.by</div>
+        </div>
+        <div class="muted">© ВитГТК — МКЦ 2025</div>
+    </div>
+</footer>
+
+<div id="registrationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="registrationContainer"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="registration.js"></script>
+</body>
+</html>
+
+

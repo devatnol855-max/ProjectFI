@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="registration.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Молодёжный культурный центр ВитГТК</title>
+    <meta name="description" content="Молодёжный культурный центр ВитГТК — студии DziVA, AMARES, FREE FLIGHT. Афиша, расписание, контакты." />
+</head>
+<body>
+<header>
+    <div class="topbar container">
+        <div class="brand">
+            <div class="logo">МК</div>
+            <div>
+                <div style="font-weight:700">Молодёжный культурный центр</div>
+                <div class="muted" style="font-size:.85rem">ВитГТК — Витебск</div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Главная</a></li>
+                <li><a href="about.html">О центре</a></li>
+                <li><a href="studios.html">Сотрудники</a></li>
+                <li><a href="events.html">Мероприятия</a></li>
+                <li><a href="media.html">Медиа</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div style="display:flex;gap:.6rem;align-items:center">
+            <a class="cta" data-register-trigger href="#">Записаться</a>
+            <button class="hamburger" aria-label="menu" onclick="toggleMenu()">☰</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <div class="hero-grid">
+            <div>
+                <h1>Молодёжный культурный центр ВитГТК</h1>
+                <p>Творчество, движение и вдохновение: вокал, танец и коллективы для студентов. Выбирайте нужный раздел, чтобы посмотреть расписание, афишу и галерею.</p>
+                <div class="actions">
+                    <a class="cta" href="studios.html">Наши студии</a>
+                    <a href="events.html" style="padding:.45rem .8rem;border-radius:8px;border:1px solid #e6e9ef">Афиша</a>
+                </div>
+                <div class="stat">
+                    <div class="card" style="display:flex;gap:1rem;align-items:center">
+                        <div style="font-size:1.2rem">📅</div>
+                        <div>
+                            <div class="muted">Часы работы</div>
+                            <div><b>08:00 — 17:00</b></div>
+                        </div>
+                    </div>
+                    <div class="card" style="display:flex;gap:1rem;align-items:center">
+                        <div style="font-size:1.2rem">📞</div>
+                        <div>
+                            <div class="muted">Телефон</div>
+                            <div><b>+375 (029) 29‑25‑888</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--            <aside class="card">-->
+<!--                <h3 class="center">Ближайшее событие</h3>-->
+<!--                <div style="font-weight:700">Отчётный концерт студии AMARES</div>-->
+<!--                <div class="muted" style="margin:.6rem 0">12 декабря — Большой зал</div>-->
+<!--                <p class="muted">Сольные номера, коллективные постановки и гостевой сет студии DziVA. Подробности и регистрация на странице афиши.</p>-->
+<!--                <div style="display:flex;gap:.5rem;margin-top:1rem">-->
+<!--                    <a class="cta" href="events.html">К афише</a>-->
+<!--                    <a href="contacts.html" style="padding:.45rem .8rem;border-radius:8px;border:1px solid #e6e9ef">Записаться</a>-->
+<!--                </div>-->
+<!--            </aside>-->
+        </div>
+    </section>
+
+    <section style="margin-top:1.5rem">
+        <h2>Все разделы вынесены на отдельные страницы</h2>
+        <div class="highlights">
+            <article class="card">
+                <h3>О центре</h3>
+                <p class="muted">История МКЦ, направления работы и команда кураторов.</p>
+                <a class="cta" href="about.html" style="margin-top:1rem;display:inline-block">Перейти</a>
+            </article>
+            <article class="card">
+                <h3>Сотрудники</h3>
+                <p class="muted">Руководители и работники центра</p>
+                <a class="cta" href="studios.html" style="margin-top:1rem;display:inline-block">Выбрать студию</a>
+            </article>
+            <article class="card">
+                <h3>Мероприятия</h3>
+                <p class="muted">Актуальная афиша концертов, мастер-классов и фестивалей.</p>
+                <a class="cta" href="events.html" style="margin-top:1rem;display:inline-block">К афише</a>
+            </article>
+<!--            <article class="card">-->
+<!--                <h3>Галерея</h3>-->
+<!--                <p class="muted">Фото и видео с выступлений, гастролей и backstage.</p>-->
+<!--                <a class="cta" href="media.html" style="margin-top:1rem;display:inline-block">Смотреть</a>-->
+<!--            </article>-->
+            <article class="card">
+                <h3>Контакты</h3>
+                <p class="muted">Заявка на участие, аренда площадки и адрес центра.</p>
+                <a class="cta" href="contacts.html" style="margin-top:1rem;display:inline-block">Связаться</a>
+            </article>
+            <article class="card">
+                <h3>Новости</h3>
+                <p class="muted">Обновления проектов, наборы и волонтёрские инициативы.</p>
+                <a class="cta" href="events.html" style="margin-top:1rem;display:inline-block">Читать</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="split-two">
+        <article class="card">
+            <h3>Что внутри разделов</h3>
+            <p class="muted">Каждый раздел — отдельная страница с расширенной информацией. Посетители сразу попадают на нужный блок и могут поделиться ссылкой.</p>
+            <ul class="muted" style="padding-left:1.2rem;line-height:1.6;margin:1rem 0 0">
+                <li>подробные направления и наставники;</li>
+                <li>архив мероприятий с кнопкой регистрации;</li>
+                <li>галерея с медиа и отзывами участников;</li>
+                <li>контактная форма для заявок и вопросов.</li>
+            </ul>
+        </article>
+        <article class="card">
+            <h3>Как добраться</h3>
+            <p class="muted">ВитГТК, ул.Гагарина 41, Витебск<br>Пн–Пт: 08:00 — 17:00<br>Сб–Вс: по договорённости</p>
+            <div style="margin-top:1rem">
+                <a class="cta" href="contacts.html">Открыть карту и форму</a>
+            </div>
+        </article>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <div style="font-weight:700">Молодёжный культурный центр ВитГТК</div>
+            <div class="muted" style="font-size:.9rem">г.Витебск, ул.Гагарина 41 · : 8(0212)36-17-07 · vitgtk@belstu.by</div>
+        </div>
+        <div class="muted">© ВитГТК — МКЦ 2025</div>
+    </div>
+</footer>
+
+<div id="registrationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="registrationContainer"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="registration.js"></script>
+</body>
+</html>
+
