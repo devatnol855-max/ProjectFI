@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Админ-панель — Молодёжный культурный центр ВГТК</title>
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .admin-header {
+            margin-bottom: 2rem;
+        }
+        .admin-header h1 {
+            margin: 0 0 0.5rem;
+            font-size: 2rem;
+        }
+        .admin-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e6e9ef;
+        }
+        .admin-tab {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--muted);
+            transition: all 0.2s;
+            margin-bottom: -2px;
+        }
+        .admin-tab:hover {
+            color: var(--accent);
+        }
+        .admin-tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            font-weight: 600;
+        }
+        .admin-section {
+            display: none;
+        }
+        .admin-section.active {
+            display: block;
+        }
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: #b8296e;
+        }
+        .btn-secondary {
+            background: #fff;
+            color: var(--dark);
+            border: 1px solid #e6e9ef;
+        }
+        .btn-secondary:hover {
+            background: var(--bg);
+        }
+        .btn-danger {
+            background: #dc3545;
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        .admin-list {
+            display: grid;
+            gap: 1rem;
+        }
+        .admin-item {
+            background: #fff;
+            border: 1px solid #e6e9ef;
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 1rem;
+        }
+        .admin-item-content {
+            flex: 1;
+        }
+        .admin-item-title {
+            font-weight: 600;
+            margin: 0 0 0.5rem;
+            font-size: 1.1rem;
+        }
+        .admin-item-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        .admin-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .admin-item-actions .btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--muted);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .modal-close:hover {
+            background: var(--bg);
+            color: var(--dark);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #e6e9ef;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .form-group textarea.content-editor {
+            min-height: 200px;
+        }
+        .form-group textarea.gallery-editor {
+            min-height: 150px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+        .form-group small {
+            display: block;
+            margin-top: 0.25rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e6e9ef;
+        }
+        .gallery-item {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+        .gallery-item input {
+            flex: 1;
+        }
+        .gallery-item button {
+            padding: 0.4rem 0.8rem;
+            background: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .add-gallery-btn {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg);
+            border: 1px dashed #e6e9ef;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--muted);
+        }
+        .add-gallery-btn:hover {
+            background: #f0f2f5;
+            color: var(--dark);
+        }
+        .content-paragraphs {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .content-paragraph {
+            display: flex;
+            gap: 0.5rem;
+            align-items: start;
+        }
+        .content-paragraph textarea {
+            flex: 1;
+            min-height: 80px;
+        }
+        .content-paragraph button {
+            padding: 0.4rem 0.8rem;
+            background: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 0.6rem;
+        }
+        .add-content-btn {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg);
+            border: 1px dashed #e6e9ef;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--muted);
+        }
+        .add-content-btn:hover {
+            background: #f0f2f5;
+            color: var(--dark);
+        }
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--muted);
+        }
+        .preview-image {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="topbar container">
+        <div class="brand">
+            <div class="logo">МК</div>
+            <div>
+                <div style="font-weight:700">Молодёжный культурный центр</div>
+                <div class="muted" style="font-size:.85rem">ВитГТК — Витебск</div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Главная</a></li>
+                <li><a href="events.html">Мероприятия</a></li>
+                <li><a href="admin.html">Админ-панель</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Админ-панель</h1>
+            <p class="muted">Управление материалами сайта</p>
+        </div>
+
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="events">События</button>
+            <button class="admin-tab" data-tab="articles">Статьи</button>
+        </div>
+
+        <!-- События -->
+        <div id="events-section" class="admin-section active">
+            <div class="admin-actions">
+                <button class="btn btn-primary" onclick="openEventModal()">+ Добавить событие</button>
+                <button class="btn btn-secondary" onclick="loadEvents()">Обновить</button>
+            </div>
+            <div id="events-list" class="admin-list">
+                <div class="empty-state">Загрузка событий...</div>
+            </div>
+        </div>
+
+        <!-- Статьи -->
+        <div id="articles-section" class="admin-section">
+            <div class="admin-actions">
+                <button class="btn btn-primary" onclick="openArticleModal()">+ Добавить статью</button>
+                <button class="btn btn-secondary" onclick="loadArticles()">Обновить</button>
+            </div>
+            <div id="articles-list" class="admin-list">
+                <div class="empty-state">Загрузка статей...</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Модальное окно для события -->
+<div id="event-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeEventModal()">&times;</button>
+        <div class="modal-header">
+            <h2 id="event-modal-title">Новое событие</h2>
+        </div>
+        <form id="event-form">
+            <input type="hidden" id="event-id" />
+            <div class="form-group">
+                <label for="event-title">Название *</label>
+                <input type="text" id="event-title" required />
+            </div>
+            <div class="form-group">
+                <label for="event-date">Дата *</label>
+                <input type="text" id="event-date" placeholder="12.12.2025" required />
+            </div>
+            <div class="form-group">
+                <label for="event-location">Место проведения *</label>
+                <input type="text" id="event-location" required />
+            </div>
+            <div class="form-group">
+                <label for="event-type">Тип *</label>
+                <select id="event-type" required>
+                    <option value="concert">Концерт</option>
+                    <option value="premiere">Премьера</option>
+                    <option value="street">Уличное мероприятие</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="event-image">URL изображения *</label>
+                <input type="url" id="event-image" required />
+                <img id="event-image-preview" class="preview-image" style="display: none;" />
+            </div>
+            <div class="form-group">
+                <label for="event-image-alt">Альтернативный текст изображения</label>
+                <input type="text" id="event-image-alt" />
+            </div>
+            <div class="form-group">
+                <label for="event-article-id">ID статьи (опционально)</label>
+                <input type="text" id="event-article-id" />
+                <small>ID статьи, связанной с этим событием</small>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeEventModal()">Отмена</button>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Модальное окно для статьи -->
+<div id="article-modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeArticleModal()">&times;</button>
+        <div class="modal-header">
+            <h2 id="article-modal-title">Новая статья</h2>
+        </div>
+        <form id="article-form">
+            <input type="hidden" id="article-id" />
+            <div class="form-group">
+                <label for="article-title">Название *</label>
+                <input type="text" id="article-title" required />
+            </div>
+            <div class="form-group">
+                <label for="article-date">Дата *</label>
+                <input type="text" id="article-date" placeholder="12.12.2025" required />
+            </div>
+            <div class="form-group">
+                <label for="article-location">Место проведения *</label>
+                <input type="text" id="article-location" required />
+            </div>
+            <div class="form-group">
+                <label for="article-type">Тип *</label>
+                <select id="article-type" required>
+                    <option value="concert">Концерт</option>
+                    <option value="premiere">Премьера</option>
+                    <option value="street">Уличное мероприятие</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="article-image">URL основного изображения *</label>
+                <input type="url" id="article-image" required />
+                <img id="article-image-preview" class="preview-image" style="display: none;" />
+            </div>
+            <div class="form-group">
+                <label>Содержание статьи (абзацы) *</label>
+                <div id="article-content-list" class="content-paragraphs">
+                    <div class="content-paragraph">
+                        <textarea class="content-editor" placeholder="Введите текст абзаца"></textarea>
+                        <button type="button" onclick="removeContentParagraph(this)">×</button>
+                    </div>
+                </div>
+                <button type="button" class="add-content-btn" onclick="addContentParagraph()">+ Добавить абзац</button>
+            </div>
+            <div class="form-group">
+                <label>Галерея изображений</label>
+                <div id="article-gallery-list" class="content-paragraphs">
+                </div>
+                <button type="button" class="add-gallery-btn" onclick="addGalleryItem()">+ Добавить изображение</button>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeArticleModal()">Отмена</button>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="admin.js"></script>
+</body>
+</html>
+
+
